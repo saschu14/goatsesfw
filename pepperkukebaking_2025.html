@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pepperkukebaking 2025!</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 1rem 2rem;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .image-card img {
+      max-width: 100%;
+      border-radius: 6px;
+      display: block;
+    }
+    .image-info {
+      margin-top: 0.5rem;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    .vote-button {
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+    }
+    .vote-button.voted {
+      font-weight: bold;
+      outline: 2px solid #000;
+    }
+    /* Modal background */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        padding-top: 60px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background: rgba(0,0,0,0.8);
+    }
+    /* Big centered image */
+    .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 80%;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+    }
+    /* Close button */
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        user-select: none;
+    }
+    .close:hover {
+        color: #ddd;
+    }
+    body {
+        background: url("images/Pepperkaker_background.jpg") no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 1rem 2rem;
+        font-family: system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="font-family: Calibri; color: brown; background-color: #ddddddb6; outline-style: groove; outline-color: #ddd;">Vote for Your Favorite Pepperkuk!</h1>
+
+  <div class="gallery">
+    <article class="image-card" data-id="image1">
+      <img src="images/mariosfw_placeholder.jpg" alt="Photo 1" />
+      <div class="image-info">
+        <span class="vote-count">0 votes</span>
+        <button class="vote-button">Vote</button>
+      </div>
+    </article>
+
+    <article class="image-card" data-id="image2">
+      <img src="images/mariosfw_placeholder.jpg" alt="Photo 2" />
+      <div class="image-info">
+        <span class="vote-count">0 votes</span>
+        <button class="vote-button">Vote</button>
+      </div>
+    </article>
+
+    <article class="image-card" data-id="image3">
+      <img src="images/mariosfw_placeholder.jpg" alt="Photo 3" />
+      <div class="image-info">
+        <span class="vote-count">0 votes</span>
+        <button class="vote-button">Vote</button>
+      </div>
+    </article>
+
+    <article class="image-card" data-id="image4">
+      <img src="images/mariosfw_placeholder.jpg" alt="Photo 4" />
+      <div class="image-info">
+        <span class="vote-count">0 votes</span>
+        <button class="vote-button">Vote</button>
+      </div>
+    </article>
+
+    <article class="image-card" data-id="image5">
+      <img src="images/mariosfw_placeholder.jpg" alt="Photo 5" />
+      <div class="image-info">
+        <span class="vote-count">0 votes</span>
+        <button class="vote-button">Vote</button>
+      </div>
+    </article>
+
+    <article class="image-card" data-id="image6">
+      <img src="images/mariosfw_placeholder.jpg" alt="Photo 6" />
+      <div class="image-info">
+        <span class="vote-count">0 votes</span>
+        <button class="vote-button">Vote</button>
+      </div>
+    </article>
+
+    <article class="image-card" data-id="image7">
+      <img src="images/mariosfw_placeholder.jpg" alt="Photo 7" />
+      <div class="image-info">
+        <span class="vote-count">0 votes</span>
+        <button class="vote-button">Vote</button>
+      </div>
+    </article>
+
+    <!-- Add more image-card blocks as needed -->
+  </div>
+
+    <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <script src="votes.js"></script>
+</body>
+</html>
