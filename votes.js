@@ -69,6 +69,10 @@ function fetchVotesFromBackend() {
 function handleVote(imageId) {
     const previousFavorite = myFavorite; // remember old favorite
 
+    // If they click the same image again, do nothing
+    if (previousFavorite === imageId) {
+        return;
+    }
     myFavorite = imageId;
     localStorage.setItem("myFavoriteImage", imageId);
 
