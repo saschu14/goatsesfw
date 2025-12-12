@@ -1,5 +1,5 @@
-// ---- CONFIG: change this when you deploy the backend somewhere online ----
-const API_BASE = "https://goat-voting-backend.onrender.com"; // later: "https://your-backend-url.com"
+// ---- CONFIG: The deployed backend URL ----
+const API_BASE = "https://goat-voting-backend.onrender.com";
 
 let votes = {};
 let myFavorite = localStorage.getItem("myFavoriteImage") || null;
@@ -7,7 +7,7 @@ let myFavorite = localStorage.getItem("myFavoriteImage") || null;
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".image-card");
 
-  // Attach click handlers for "Vote" buttons
+  // ----- VOTING: set up click handlers for buttons -----
   cards.forEach(card => {
     const imageId = card.dataset.id;
     const button = card.querySelector(".vote-button");
@@ -17,11 +17,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Load votes from backend when page opens
+  // Load current votes from backend when page loads
   fetchVotesFromBackend();
+
+  // ----- IMAGE MODAL / ENLARGE ON CLICK -----
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.querySelector("#imageModal .close");
+
+  if (modal && modalImg && closeBtn) {
+    // Add click listener to each image in the cards
+    document.querySelectorAll(".image-card img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        modalImg.alt = img.alt || "";
+      });
+    });
+
+    // Close when X is clicked
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    // Close when clicking outside the image
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  } else {
+    console.warn("Modal elements not found – check imageModal, modalImg, and .close in HTML.");
+  }
 });
 
-// Get current vote counts from backend
+// ----- BACKEND VOTE FUNCTIONS -----
+// Fetch current votes from the backend
 function fetchVotesFromBackend() {
   fetch(`${API_BASE}/votes`)
     .then(res => res.json())
