@@ -67,24 +67,29 @@ function fetchVotesFromBackend() {
 
 // Send a vote to the backend
 function handleVote(imageId) {
-  myFavorite = imageId;
-  localStorage.setItem("myFavoriteImage", imageId);
+    const previousFavorite = myFavorite; // remember old favorite
 
-  fetch(`${API_BASE}/vote`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ imageId })
-  })
-    .then(res => res.json())
-    .then(data => {
-      votes = data.votes || {};
-      renderVotes();
+    myFavorite = imageId;
+    localStorage.setItem("myFavoriteImage", imageId);
+
+    fetch(`${API_BASE}/vote`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            imageId: imageId,
+            previousImageId: previousFavorite
+        })
     })
-    .catch(err => {
-      console.error("Error sending vote:", err);
-    });
+        .then(res => res.json())
+        .then(data => {
+            votes = data.votes || {};
+            renderVotes();
+        })
+        .catch(err => {
+            console.error("Error sending vote:", err);
+        });
 }
 
 // Update the UI with vote counts and favorite highlight
