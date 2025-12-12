@@ -1,5 +1,5 @@
 // ---- CONFIG: change this when you deploy the backend somewhere online ----
-const API_BASE = "http://localhost:5000"; // later: "https://your-backend-url.com"
+const API_BASE = "https://goat-voting-backend.onrender.com"; // later: "https://your-backend-url.com"
 
 let votes = {};
 let myFavorite = localStorage.getItem("myFavoriteImage") || null;
