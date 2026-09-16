@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Guild Rules</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 20px;
+
+            font-family: Arial, sans-serif;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.65),
+                    rgba(0, 0, 0, 0.65)
+                ),
+                url("images/background.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .rules-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+
+            background: rgba(20, 20, 20, 0.9);
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 42px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #bbb;
+            margin-bottom: 40px;
+        }
+
+        .rule-section {
+            margin-bottom: 35px;
+        }
+
+        .rule-section h2 {
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+        }
+
+        .rule-section li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .important {
+            padding: 15px 20px;
+            margin: 25px 0;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-left: 4px solid white;
+            border-radius: 5px;
+        }
+
+        .back-button {
+            display: block;
+            width: fit-content;
+
+            margin: 40px auto 0;
+            padding: 10px 20px;
+
+            color: white;
+            text-decoration: none;
+
+            border: 1px solid white;
+            border-radius: 8px;
+
+            transition: 0.2s;
+        }
+
+        .back-button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* Better layout on phones */
+        @media (max-width: 600px) {
+            .rules-container {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="rules-container">
+
+        <h1>Guild Rules</h1>
+
+        <p class="subtitle">
+            Read these before joining the guild.
+        </p>
+
+
+        <section class="rule-section">
+
+            <h2>1. General Rules</h2>
+
+            <ol>
+                <li>Respect other guild members.</li>
+
+                <li>
+                    Don't intentionally cause problems for other members.
+                </li>
+
+                <li>
+                    Keep disagreements civil.
+                </li>
+            </ol>
+
+        </section>
+
+
+        <section class="rule-section">
+
+            <h2>2. Guild Activity</h2>
+
+            <ul>
+                <li>Participate when you're able to.</li>
+
+                <li>
+                    Let someone know if you're going to be inactive
+                    for a long period.
+                </li>
+
+                <li>
+                    Help other guild members when possible.
+                </li>
+            </ul>
+
+        </section>
+
+
+        <section class="rule-section">
+
+            <h2>3. Events</h2>
+
+            <ul>
+                <li>
+                    Follow the event leader's instructions during
+                    organized activities.
+                </li>
+
+                <li>
+                    If you sign up for something, try to show up.
+                </li>
+
+                <li>
+                    Let the group know if your plans change.
+                </li>
+            </ul>
+
+        </section>
+
+
+        <div class="important">
+            <strong>Important:</strong>
+            Rules may be updated as the guild develops.
+        </div>
+
+
+        <section class="rule-section">
+
+            <h2>4. Consequences</h2>
+
+            <p>
+                Breaking guild rules may result in a warning,
+                temporary restriction, or removal from the guild
+                depending on the situation.
+            </p>
+
+        </section>
+
+
+        <a href="index.html" class="back-button">
+            ← Back to Home
+        </a>
+
+    </main>
+
+</body>
+</html>
