@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Guild Voting Wheel</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 40px 20px;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            color: #e7c66a;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.8)
+                ),
+                url("images/wow-background.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+
+        /* ---------- HEADER ---------- */
+
+        h1 {
+            margin-bottom: 5px;
+
+            text-align: center;
+            text-transform: uppercase;
+
+            font-size: 42px;
+            letter-spacing: 3px;
+
+            color: #e5b84b;
+
+            text-shadow:
+                2px 2px 3px black,
+                0 0 12px #7d4a13;
+        }
+
+        .subtitle {
+            margin-top: 5px;
+            margin-bottom: 35px;
+
+            color: #c8a96a;
+            font-style: italic;
+
+            text-align: center;
+        }
+
+
+        /* ---------- WHEEL AREA ---------- */
+
+        .wheel-wrapper {
+            position: relative;
+
+            width: 520px;
+            height: 560px;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+
+        /* Pointer */
+
+        .pointer {
+            position: absolute;
+
+            top: -5px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 0;
+            height: 0;
+
+            border-left: 24px solid transparent;
+            border-right: 24px solid transparent;
+            border-top: 55px solid #e7b23d;
+
+            z-index: 10;
+
+            filter:
+                drop-shadow(0 3px 2px black)
+                drop-shadow(0 0 5px #ffb000);
+        }
+
+
+        /* Wheel */
+
+        .wheel {
+            position: relative;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 50%;
+            border: 9px solid #241307;
+
+            /*
+                Probabilities:
+
+                1   = 18.8%
+                2   = 18.8%
+                3   = 18.8%
+                4   = 18.8%
+                5   = 18.8%
+                10  = 5%
+                100 = 1%
+            */
+
+            background: conic-gradient(
+                #5e1b0b 0% 18.8%,
+                #a36a1d 18.8% 37.6%,
+                #38200d 37.6% 56.4%,
+                #7b2b13 56.4% 75.2%,
+                #b1842d 75.2% 94%,
+                #7b1515 94% 99%,
+                #d6a72c 99% 100%
+            );
+
+            box-shadow:
+                0 0 0 4px #bd8731,
+                0 0 0 10px #211207,
+                0 8px 35px rgba(0, 0, 0, 0.9),
+                inset 0 0 35px rgba(0, 0, 0, 0.8);
+
+            transition:
+                transform 5s cubic-bezier(0.12, 0.65, 0.18, 1);
+        }
+
+
+        /* Lines separating segments */
+
+        .wheel::after {
+            content: "";
+
+            position: absolute;
+
+            width: 105px;
+            height: 105px;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #8b5c21,
+                    #3c200c 65%,
+                    #1b0e05
+                );
+
+            border: 5px solid #c18a31;
+
+            box-shadow:
+                0 0 0 4px #211207,
+                0 0 20px black;
+
+            z-index: 4;
+        }
+
+
+        /* ---------- NUMBERS ---------- */
+
+        .number {
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            width: 50px;
+            height: 50px;
+
+            margin-left: -25px;
+            margin-top: -25px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 30px;
+            font-weight: bold;
+
+            color: #ffe59a;
+
+            text-shadow:
+                2px 2px 2px black,
+                0 0 5px black;
+
+            z-index: 3;
+        }
+
+
+        /*
+         * Each number is rotated around the center,
+         * then moved outward by 190px.
+         */
+
+        .number {
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            width: 60px;
+            height: 60px;
+
+            margin-left: -30px;
+            margin-top: -30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 30px;
+            font-weight: bold;
+
+            color: #ffe59a;
+
+            text-shadow:
+                2px 2px 2px black,
+                0 0 5px black;
+
+            z-index: 3;
+        }
+
+
+        /* Center of each probability segment */
+
+        .number-1 {
+            transform:
+                rotate(33.84deg)
+                translateY(-190px)
+                rotate(-33.84deg);
+        }
+
+        .number-2 {
+            transform:
+                rotate(101.52deg)
+                translateY(-190px)
+                rotate(-101.52deg);
+        }
+
+        .number-3 {
+            transform:
+                rotate(169.2deg)
+                translateY(-190px)
+                rotate(-169.2deg);
+        }
+
+        .number-4 {
+            transform:
+                rotate(236.88deg)
+                translateY(-190px)
+                rotate(-236.88deg);
+        }
+
+        .number-5 {
+            transform:
+                rotate(304.56deg)
+                translateY(-190px)
+                rotate(-304.56deg);
+        }
+
+        .number-10 {
+            transform:
+                rotate(347.4deg)
+                translateY(-190px)
+                rotate(-347.4deg);
+
+            color: #ffca4b;
+        }
+
+
+        /*
+        * 100 only occupies 1% of the wheel,
+        * so move the text inward slightly
+        * so it fits better.
+        */
+
+        .number-100 {
+            transform:
+                rotate(358.2deg)
+                translateY(-155px)
+                rotate(-358.2deg);
+
+            font-size: 23px;
+
+            color: #fff2a8;
+
+            text-shadow:
+                0 0 6px #ff9d00,
+                2px 2px 3px black;
+        }
+
+
+        /* ---------- SPIN BUTTON ---------- */
+
+        #spinButton {
+            margin-top: 5px;
+
+            padding: 14px 38px;
+
+            font-family: Georgia, serif;
+            font-size: 19px;
+            font-weight: bold;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            color: #f6dc91;
+
+            background:
+                linear-gradient(
+                    #673b14,
+                    #2b1607
+                );
+
+            border: 3px solid #bd8731;
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 0 2px #1c0f06,
+                0 5px 12px rgba(0, 0, 0, 0.7);
+
+            transition: 0.2s;
+        }
+
+        #spinButton:hover:not(:disabled) {
+            color: #fff2b2;
+
+            border-color: #f0bb4d;
+
+            box-shadow:
+                0 0 0 2px #1c0f06,
+                0 0 18px rgba(255, 178, 30, 0.8);
+
+            transform: translateY(-2px);
+        }
+
+        #spinButton:disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+
+        /* ---------- RESULT ---------- */
+
+        #result {
+            min-height: 80px;
+
+            margin-top: 30px;
+
+            text-align: center;
+        }
+
+        .result-number {
+            display: block;
+
+            font-size: 48px;
+            font-weight: bold;
+
+            color: #ffd45d;
+
+            text-shadow:
+                2px 2px 3px black,
+                0 0 12px #e68a00;
+        }
+
+        .result-text {
+            font-size: 19px;
+            color: #e2c174;
+        }
+
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .wheel-wrapper {
+                width: 330px;
+                height: 365px;
+            }
+
+            .wheel {
+                width: 320px;
+                height: 320px;
+            }
+
+            .number {
+                font-size: 22px;
+            }
+
+            .number-1 {
+                transform: rotate(33.84deg) translateY(-120px) rotate(-33.84deg);
+            }
+
+            .number-2 {
+                transform: rotate(101.52deg) translateY(-120px) rotate(-101.52deg);
+            }
+
+            .number-3 {
+                transform: rotate(169.2deg) translateY(-120px) rotate(-169.2deg);
+            }
+
+            .number-4 {
+                transform: rotate(236.88deg) translateY(-120px) rotate(-236.88deg);
+            }
+
+            .number-5 {
+                transform: rotate(304.56deg) translateY(-120px) rotate(-304.56deg);
+            }
+
+            .number-10 {
+                transform: rotate(347.4deg) translateY(-120px) rotate(-347.4deg);
+            }
+
+            .number-100 {
+                transform: rotate(358.2deg) translateY(-95px) rotate(-358.2deg);
+
+                font-size: 17px;
+            }
+
+            .wheel::after {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <h1>Wheel of Democracy</h1>
+
+    <p class="subtitle">
+        The wheel shall determine the weight of your voice.
+    </p>
+
+
+    <div class="wheel-wrapper">
+
+        <div class="pointer"></div>
+
+        <div class="wheel" id="wheel">
+
+            <div class="number number-1">1</div>
+            <div class="number number-2">2</div>
+            <div class="number number-3">3</div>
+            <div class="number number-4">4</div>
+            <div class="number number-5">5</div>
+            <div class="number number-10">10</div>
+            <div class="number number-100">100</div>
+
+        </div>
+
+    </div>
+
+
+    <button id="spinButton">
+        Spin the Wheel
+    </button>
+
+
+    <div id="result"></div>
+
+
+    <script>
+
+        const wheel =
+            document.getElementById("wheel");
+
+        const spinButton =
+            document.getElementById("spinButton");
+
+        const result =
+            document.getElementById("result");
+
+
+        let currentRotation = 0;
+        let spinning = false;
+
+
+        /*
+        * Wheel segments.
+        *
+        * start/end are percentages around the wheel.
+        */
+
+        const segments = [
+
+            {
+                value: 1,
+                start: 0,
+                end: 18.8
+            },
+
+            {
+                value: 2,
+                start: 18.8,
+                end: 37.6
+            },
+
+            {
+                value: 3,
+                start: 37.6,
+                end: 56.4
+            },
+
+            {
+                value: 4,
+                start: 56.4,
+                end: 75.2
+            },
+
+            {
+                value: 5,
+                start: 75.2,
+                end: 94
+            },
+
+            {
+                value: 10,
+                start: 94,
+                end: 99
+            },
+
+            {
+                value: 100,
+                start: 99,
+                end: 100
+            }
+
+        ];
+
+
+        spinButton.addEventListener("click", () => {
+
+            if (spinning) {
+                return;
+            }
+
+
+            spinning = true;
+
+            spinButton.disabled = true;
+
+            result.innerHTML = "";
+
+
+            /*
+            * Random number from:
+            *
+            * 0 <= random < 100
+            */
+
+            const random =
+                Math.random() * 100;
+
+
+            /*
+            * Find which probability segment
+            * contains our random number.
+            */
+
+            const winner =
+                segments.find(segment =>
+                    random >= segment.start &&
+                    random < segment.end
+                );
+
+
+            /*
+            * Pick the CENTER of that segment
+            * for the visual landing position.
+            */
+
+            const centerPercentage =
+                (winner.start + winner.end) / 2;
+
+
+            const winningAngle =
+                centerPercentage * 3.6;
+
+
+            /*
+            * Add between 5 and 7 full spins.
+            */
+
+            const extraSpins =
+                5 + Math.floor(Math.random() * 3);
+
+
+            /*
+            * Normalize current rotation.
+            */
+
+            const normalizedRotation =
+                ((currentRotation % 360) + 360) % 360;
+
+
+            /*
+            * Rotation required to bring the
+            * winning segment to the pointer.
+            */
+
+            let targetOffset =
+                360 - winningAngle;
+
+
+            let additionalRotation =
+                extraSpins * 360
+                + targetOffset
+                - normalizedRotation;
+
+
+            /*
+            * Always rotate forward.
+            */
+
+            if (additionalRotation < extraSpins * 360) {
+                additionalRotation += 360;
+            }
+
+
+            currentRotation += additionalRotation;
+
+
+            wheel.style.transform =
+                `rotate(${currentRotation}deg)`;
+
+
+            /*
+            * Show result when animation finishes.
+            */
+
+            setTimeout(() => {
+
+                let message;
+
+
+                if (winner.value === 100) {
+
+                    message = `
+                        <span class="result-number">
+                            100
+                        </span>
+
+                        <span class="result-text">
+                            JACKPOT! Your vote is worth
+                            <strong>100 votes!</strong>
+                        </span>
+                    `;
+
+                }
+
+                else if (winner.value === 10) {
+
+                    message = `
+                        <span class="result-number">
+                            10
+                        </span>
+
+                        <span class="result-text">
+                            Lucky! Your vote is worth
+                            <strong>10 votes.</strong>
+                        </span>
+                    `;
+
+                }
+
+                else {
+
+                    message = `
+                        <span class="result-number">
+                            ${winner.value}
+                        </span>
+
+                        <span class="result-text">
+                            Your vote is worth
+                            ${winner.value}
+                            ${winner.value === 1 ? "vote" : "votes"}.
+                        </span>
+                    `;
+
+                }
+
+
+                result.innerHTML = message;
+
+
+                spinButton.textContent =
+                    "Spin Again";
+
+
+                spinButton.disabled = false;
+
+                spinning = false;
+
+            }, 5000);
+
+        });
+
+    </script>
+
+</body>
+</html>
