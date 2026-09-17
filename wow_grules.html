@@ -8,6 +8,20 @@
     <title>Guild Rules</title>
 
     <style>
+        @font-face {
+            font-family: "LifeCraft";
+            src: url("fonts/LifeCraft.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Friz Quadrata";
+            src: url("fonts/FrizQuadrata.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+        
         * {
             box-sizing: border-box;
         }
@@ -17,7 +31,7 @@
             min-height: 100vh;
             padding: 50px 20px;
 
-            font-family: Georgia, "Times New Roman", serif;
+            font-family: "Friz Quadrata", Georgia, "Times New Roman", serif;
 
             /* Replace with your own WoW/fantasy background */
             background: url("images/mariosfw.jpg") center center fixed;
@@ -62,7 +76,10 @@
             text-align: center;
             text-transform: uppercase;
 
-            font-size: 46px;
+            font-family: "LifeCraft", Georgia, serif;
+            font-weight: normal;
+
+            font-size: 56px;
             letter-spacing: 3px;
 
             color: #4b1708;
@@ -98,11 +115,14 @@
             margin-bottom: 15px;
             padding-bottom: 8px;
 
+            font-family: "LifeCraft", Georgia, serif;
+            font-size: 31px;
+            font-weight: normal;
+            letter-spacing: 1px;
+
             color: #551b0b;
 
             border-bottom: 2px solid #8c5b23;
-
-            font-size: 25px;
         }
 
         .rule-section li {
@@ -233,7 +253,13 @@
 
             transform: translateY(-2px);
         }
-
+        .back-button,
+        .wheel-button {
+            font-family: "LifeCraft", Georgia, serif;
+            font-weight: normal;
+            font-size: 21px;
+            letter-spacing: 1px;
+        }
 
         /* Mobile */
 
