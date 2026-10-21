@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Election Rules</title>
+
+    <style>
+        @font-face {
+            font-family: "LifeCraft";
+            src: url("fonts/LifeCraft.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Friz Quadrata";
+            src: url("fonts/FrizQuadrata.ttf") format("truetype");
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 45px 18px;
+            font-family: "Friz Quadrata", Georgia, serif;
+            color: #2b1a0d;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.65),
+                    rgba(0,0,0,0.8)
+                ),
+                url("images/wow-background.jpg")
+                center / cover fixed;
+        }
+
+        .rules-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 45px clamp(20px, 5vw, 65px);
+            background: linear-gradient(
+                rgba(222,190,125,0.96),
+                rgba(190,145,78,0.97)
+            );
+            border: 4px solid #51300f;
+            border-radius: 6px;
+            box-shadow:
+                0 0 0 2px #b88a3b,
+                0 0 0 7px #251509,
+                0 10px 40px rgba(0,0,0,0.8),
+                inset 0 0 40px rgba(70,35,5,0.35);
+        }
+
+        h1, h2 {
+            font-family: "LifeCraft", Georgia, serif;
+            font-weight: normal;
+            overflow-wrap: anywhere;
+        }
+
+        h1 {
+            margin: 0;
+            text-align: center;
+            font-size: clamp(36px, 6vw, 60px);
+            color: #4b1708;
+            text-shadow: 1px 1px #d8a84d;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            font-size: 20px;
+            color: #593819;
+            margin: 10px 0 45px;
+        }
+
+        .rule-section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-size: clamp(27px, 4vw, 34px);
+            color: #551b0b;
+            border-bottom: 2px solid #8c5b23;
+            padding-bottom: 8px;
+        }
+
+        p, li {
+            font-size: clamp(18px, 2vw, 21px);
+            line-height: 1.65;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        .odds-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: clamp(16px, 2vw, 20px);
+        }
+
+        .odds-table th,
+        .odds-table td {
+            padding: 12px;
+            border: 1px solid #8c5b23;
+            text-align: center;
+        }
+
+        .odds-table th {
+            background: rgba(75, 23, 8, 0.2);
+        }
+
+        .jackpot {
+            font-weight: bold;
+            color: #741c0c;
+        }
+
+        .notice {
+            padding: 18px;
+            background: rgba(91,42,12,0.15);
+            border-left: 5px solid #741c0c;
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+        .page-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 40px;
+        }
+
+        .page-buttons a {
+            padding: 12px 22px;
+            font-family: "LifeCraft", Georgia, serif;
+            font-size: 23px;
+            text-decoration: none;
+            text-align: center;
+            color: #f1d28a;
+            background: linear-gradient(#583214, #291508);
+            border: 2px solid #b48232;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+
+        .page-buttons a:hover {
+            color: #fff2b5;
+            border-color: #e0ad47;
+            box-shadow: 0 0 12px rgba(230,170,55,0.8);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 20px 12px; }
+            .rules-container { padding: 30px 20px; }
+            .subtitle { font-size: 18px; }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="rules-container">
+
+        <h1>Weekly Guild Election</h1>
+        <p class="subtitle">
+            The sacred laws governing the transfer of power in our beloved democracy.
+        </p>
+
+        <section class="rule-section">
+            <h2>I. The Weekly Election</h2>
+            <ol>
+                <li>A guild leader election shall be held once every week in the guild house.</li>
+                <li>All guild members present at the election earns the right to vote.</li>
+                <li>All guild members present are eligible guild leaders (except apprentices/lærlinger).</li>
+                <li>The winner becomes guild leader until the next election.</li>
+                <li>A leader may only remain in office for four (4) consecutive election cycles. However, previous leaders are eligible to run again after 2 election cycles of hiatus.</li>
+            </ol>
+        </section>
+
+        <section class="rule-section">
+            <h2>II. The Wheel of Democracy</h2>
+            <ol>
+                <li>Guild speaker controls the pace of the election as well as the wheel of voting.</li>
+                <li>The wheel of voting is spun once for each participating member.</li>
+                <li>The result determines their voting power.</li>
+                <li>Each spin is final unless a technical error occurs.</li>
+            </ol>
+
+            <table class="odds-table">
+                <thead>
+                    <tr>
+                        <th>Votes Awarded</th>
+                        <th>Probability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>18.8%</td></tr>
+                    <tr><td>2</td><td>18.8%</td></tr>
+                    <tr><td>3</td><td>18.8%</td></tr>
+                    <tr><td>4</td><td>18.8%</td></tr>
+                    <tr><td>5</td><td>18.8%</td></tr>
+                    <tr><td>10</td><td>5%</td></tr>
+                    <tr class="jackpot"><td>100</td><td>1%</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="rule-section">
+            <h2>III. Casting Votes</h2>
+            <ol>
+                <li>All members spin before voting begins.</li>
+                <li>Each member casts their allocated votes for a candidate.</li>
+                <li>The candidate with the highest total wins.</li>
+            </ol>
+        </section>
+
+        <section class="rule-section">
+            <h2>IV. Ties and Disputes</h2>
+            <ol>
+                <li>A tie for first place triggers a runoff between tied candidates.</li>
+                <li>Candidates duel for the honor of leading the guild, with the sitting leader deciding the method of combat.</li>
+                <li>Disputes must be settled before results become official.</li>
+            </ol>
+        </section>
+
+        <section class="rule-section">
+            <h2>V. Transfer of Power</h2>
+            <ol>
+                <li>The winner becomes the new guild leader.</li>
+                <li>The outgoing leader transfers leadership after confirmation.</li>
+                <li>The leader serves until the next weekly election.</li>
+            </ol>
+        </section>
+
+        <div class="notice">
+            ⚔ Let the Wheel of Democracy decide the weight of your voice.
+            May fortune favor the worthy!
+        </div>
+
+        <nav class="page-buttons">
+            <a href="rules.html">← Guild Rules</a>
+            <a href="vote-wheel.html">⚔ Spin the Wheel ⚔</a>
+        </nav>
+
+    </main>
+</body>
+</html>
